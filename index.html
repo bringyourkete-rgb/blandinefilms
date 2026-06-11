@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blandine Massiet du Biest — Réalisatrice documentaire</title>
+  <meta name="description" content="Blandine Massiet du Biest — Réalisatrice documentaire, Nouvelle-Zélande / France" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      background: #ffffff;
+      color: #111;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --or:       #9a7b2f;
+      --or-light: #b8960c;
+      --noir:     #111111;
+      --blanc:    #ffffff;
+      --gris:     #f7f7f7;
+      --nav-h:    60px;
+      --pad:      64px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--pad);
+      z-index: 200;
+      transition: background .3s, border-color .3s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.solid { background: var(--blanc); border-bottom-color: #e8e8e8; }
+    .nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--blanc); transition: color .3s;
+    }
+    nav.solid .nav-logo { color: var(--noir); }
+    .nav-right { display: flex; align-items: center; gap: 36px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: .7rem; font-weight: 400;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.8); transition: color .2s;
+    }
+    nav.solid .nav-links a { color: #555; }
+    .nav-links a:hover { color: var(--or-light); }
+    nav.solid .nav-links a:hover { color: var(--or); }
+    .lang { display: flex; border: 1px solid rgba(255,255,255,.4); border-radius: 2px; overflow: hidden; }
+    nav.solid .lang { border-color: #ccc; }
+    .lang button {
+      background: none; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-size: .68rem;
+      letter-spacing: .1em; padding: 4px 10px;
+      color: rgba(255,255,255,.8); transition: background .2s, color .2s;
+    }
+    nav.solid .lang button { color: #555; }
+    .lang button.active { background: var(--or); color: #fff; }
+
+    /* HERO */
+    #hero { position: relative; height: 100vh; min-height: 580px; overflow: hidden; }
+    #hero img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 25%;
+    }
+    #hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.2) 0%, rgba(0,0,0,.05) 50%, rgba(0,0,0,.5) 100%);
+    }
+    .hero-text { position: absolute; bottom: 72px; left: var(--pad); z-index: 2; color: #fff; }
+    .hero-eyebrow {
+      font-size: .68rem; font-weight: 400;
+      letter-spacing: .2em; text-transform: uppercase;
+      opacity: .8; margin-bottom: 16px;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3.2rem, 6vw, 6.5rem);
+      line-height: 1.0;
+    }
+    .hero-credit {
+      position: absolute; bottom: 18px; right: 24px;
+      z-index: 2; color: rgba(255,255,255,.45);
+      font-size: .62rem; letter-spacing: .06em;
+    }
+
+    /* ABOUT */
+    #about { display: grid; grid-template-columns: 1fr 1fr; min-height: 90vh; }
+    .about-text {
+      padding: 88px var(--pad);
+      display: flex; flex-direction: column; justify-content: center;
+      background: var(--blanc);
+    }
+    .section-eyebrow {
+      font-size: .62rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--or); margin-bottom: 36px;
+    }
+    .about-text .proverbe {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 400;
+      font-size: 1.25rem; line-height: 1.5;
+      color: var(--noir); margin-bottom: 8px;
+    }
+    .about-sep { width: 40px; height: 1px; background: #ddd; margin: 28px 0; }
+    .about-text p {
+      font-size: .88rem; line-height: 1.9;
+      color: #3a3a3a; margin-bottom: 16px; font-weight: 300;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-image { position: relative; overflow: hidden; }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+    /* FILMOGRAPHIE */
+    #films { padding: 96px var(--pad); }
+    .films-label {
+      font-size: .62rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--or); margin-bottom: 20px;
+    }
+    .films-divider { border: none; border-top: 1px solid #e0e0e0; margin-bottom: 0; }
+    .film-row {
+      display: grid; grid-template-columns: 320px 1fr;
+      gap: 48px; padding: 48px 0;
+      border-bottom: 1px solid #e8e8e8;
+      align-items: start;
+      text-decoration: none; color: inherit;
+    }
+    .film-row:hover .film-row-title { color: var(--or); }
+    .film-thumb { aspect-ratio: 16/10; overflow: hidden; background: #e5e5e5; }
+    .film-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .film-row:hover .film-thumb img { transform: scale(1.03); }
+    .film-thumb-placeholder {
+      width: 100%; height: 100%; background: #e0e0e0;
+      display: flex; align-items: center; justify-content: center;
+      color: #aaa; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .film-info { padding-top: 4px; }
+    .film-meta-line {
+      font-size: .65rem; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--or); margin-bottom: 14px;
+    }
+    .film-row-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      line-height: 1.1; margin-bottom: 6px; transition: color .2s;
+    }
+    .film-row-title.ongoing { color: var(--or); }
+    .film-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 1rem;
+      color: #555; margin-bottom: 16px;
+    }
+    .film-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .badge {
+      border: 1px solid var(--or); color: var(--or);
+      font-size: .6rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px;
+    }
+    .badge-ongoing {
+      background: var(--or); color: #fff;
+      font-size: .6rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 4px 10px; display: inline-block; margin-bottom: 16px;
+    }
+    .film-desc { font-size: .86rem; line-height: 1.85; color: #3a3a3a; font-weight: 300; margin-bottom: 20px; }
+    .film-link {
+      font-size: .68rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--or); border-bottom: 1px solid var(--or);
+      padding-bottom: 2px; transition: opacity .2s; display: inline-block;
+    }
+    .film-link:hover { opacity: .7; }
+    .film-link.ghost { color: #aaa; border-color: #ddd; }
+
+    /* Logo film dans la liste */
+    .film-logo {
+      height: 36px; width: auto;
+      margin-bottom: 16px;
+      object-fit: contain;
+    }
+
+    /* CONTACT */
+    #contact {
+      background: #111; color: #fff;
+      padding: 96px var(--pad);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .contact-items { display: flex; flex-direction: column; gap: 0; }
+    .ci { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .ci:first-child { border-top: 1px solid rgba(255,255,255,.08); }
+    .ci-label {
+      font-size: .6rem; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--or); margin-bottom: 5px;
+    }
+    .ci-val { font-size: .86rem; color: rgba(255,255,255,.75); }
+    .ci-val a { color: inherit; transition: color .2s; }
+    .ci-val a:hover { color: #fff; }
+
+    /* FOOTER */
+    footer {
+      background: #0d0d0d;
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 22px var(--pad);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer p { font-size: .68rem; color: rgba(255,255,255,.25); letter-spacing: .06em; }
+
+    /* PAGES FILM */
+    .film-page { display: none; }
+    .film-page.active { display: block; }
+    .fp-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .68rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: #555; padding: calc(var(--nav-h) + 28px) var(--pad) 28px;
+      cursor: pointer; transition: color .2s;
+    }
+    .fp-back:hover { color: var(--or); }
+    .fp-back::before { content: '←'; font-size: .9rem; }
+    .fp-hero-img { margin: 0 var(--pad); aspect-ratio: 16/7; overflow: hidden; background: #eee; }
+    .fp-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+    .fp-hero-placeholder {
+      width: 100%; height: 100%; background: #ddd;
+      display: flex; align-items: center; justify-content: center;
+      color: #aaa; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .fp-content { max-width: 860px; margin: 56px var(--pad); }
+    .fp-meta {
+      font-size: .65rem; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--or); margin-bottom: 16px;
+    }
+    .fp-logo { height: 48px; width: auto; margin-bottom: 20px; object-fit: contain; }
+    .fp-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.05; margin-bottom: 8px;
+    }
+    .fp-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 1.1rem;
+      color: #555; margin-bottom: 24px;
+    }
+    .fp-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+    .fp-sep { border: none; border-top: 1px solid #e8e8e8; margin: 36px 0; }
+    .fp-body p {
+      font-size: .92rem; line-height: 1.95;
+      color: #3a3a3a; font-weight: 300; margin-bottom: 20px;
+    }
+    .fp-body p em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 1rem;
+    }
+    .fp-gallery {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 10px; margin: 56px var(--pad);
+    }
+    .fp-gallery-img { aspect-ratio: 4/3; overflow: hidden; background: #e5e5e5; }
+    .fp-gallery-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .fp-gallery-img:hover img { transform: scale(1.04); }
+    .fp-gallery-placeholder { width: 100%; height: 100%; background: #ddd; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      :root { --pad: 28px; }
+      #about { grid-template-columns: 1fr; }
+      .about-image { height: 60vw; }
+      .film-row { grid-template-columns: 1fr; gap: 20px; }
+      #contact { grid-template-columns: 1fr; gap: 48px; }
+      .fp-gallery { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .nav-links { display: none; }
+      .hero-name { font-size: 2.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a class="nav-logo" href="#" onclick="showHome()">Blandine Massiet du Biest</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about"   onclick="showHome()" data-fr="À propos"  data-en="About">À propos</a></li>
+        <li><a href="#films"   onclick="showHome()" data-fr="Films"     data-en="Films">Films</a></li>
+        <li><a href="#contact" onclick="showHome()" data-fr="Contact"   data-en="Contact">Contact</a></li>
+      </ul>
+      <div class="lang">
+        <button id="btn-fr" class="active" onclick="setLang('fr')">FR</button>
+        <button id="btn-en"               onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE PRINCIPALE -->
+  <div id="main-page">
+
+    <!-- HERO — photo : photo Sarah_format.jpg -->
+    <section id="hero">
+      <img src="photo Sarah_format.jpg" alt="Blandine Massiet du Biest, réalisatrice">
+      <div class="hero-text">
+        <p class="hero-eyebrow"
+           data-fr="Réalisatrice documentaire · Nouvelle-Zélande – France"
+           data-en="Documentary filmmaker · New Zealand – France">
+          Réalisatrice documentaire · Nouvelle-Zélande – France
+        </p>
+        <h1 class="hero-name">Blandine<br>Massiet du Biest</h1>
+      </div>
+      <p class="hero-credit">© SRLB Photography</p>
+    </section>
+
+    <!-- ABOUT — photo : BYK_Nick corridor.jpg -->
+    <section id="about">
+      <div class="about-text">
+        <p class="section-eyebrow" data-fr="Réalisatrice" data-en="Filmmaker">Réalisatrice</p>
+        <p class="proverbe">He aha te mea nui o te ao ?<br>He tangata, he tangata, he tangata.</p>
+        <p data-fr="Qu'y a-t-il de plus important au monde ? Les gens, les gens, les gens."
+           data-en="What is the greatest thing in the world? The people, the people, the people."
+           style="font-weight:400; margin-bottom:0">
+          Qu'y a-t-il de plus important au monde ? Les gens, les gens, les gens.
+        </p>
+        <div class="about-sep"></div>
+        <p data-fr="J'aime ce célèbre proverbe maori parce qu'il s'applique parfaitement aux documentaires tels que je les aime. Je suis intriguée par les biais de nos sociétés mais je me passionne aussi pour l'Art sur lequel j'aime poser un regard aimant et irrévérencieux à la fois."
+           data-en="I love this celebrated Māori proverb because it applies perfectly to the kind of documentary I believe in. I am intrigued by the biases of our societies, and deeply passionate about Art — which I like to approach with both tenderness and irreverence.">
+          J'aime ce célèbre proverbe maori parce qu'il s'applique parfaitement aux documentaires tels que je les aime. Je suis intriguée par les biais de nos sociétés mais je me passionne aussi pour l'Art sur lequel j'aime poser un regard aimant et irrévérencieux à la fois.
+        </p>
+        <p data-fr="Pour moi, chaque film est comme une histoire d'amour… qui finit bien. C'est un espace privilégié où celle qui filme voit l'autre avec toute son attention et sa complète implication, et où celui ou celle qui est filmé donne sa confiance et partage ce qu'il y a d'essentiel en lui ou en elle."
+           data-en="For me, every film is like a love story… with a happy ending. It is a privileged space where the one behind the camera sees the other with complete attention and full commitment, and where the one in front of the camera offers their trust and shares what is most essential within them.">
+          Pour moi, chaque film est comme une histoire d'amour… qui finit bien. C'est un espace privilégié où celle qui filme voit l'autre avec toute son attention et sa complète implication, et où celui ou celle qui est filmé donne sa confiance et partage ce qu'il y a d'essentiel en lui ou en elle.
+        </p>
+        <p data-fr="En espérant que le résultat de cette alchimie touche le spectateur et ouvre de nouveaux horizons."
+           data-en="My hope is that the alchemy of this exchange reaches the audience and opens new horizons.">
+          En espérant que le résultat de cette alchimie touche le spectateur et ouvre de nouveaux horizons.
+        </p>
+      </div>
+      <div class="about-image">
+        <img src="BYK_Nick corridor.jpg" alt="Extrait du film Bring Your Kete">
+      </div>
+    </section>
+
+    <!-- FILMOGRAPHIE -->
+    <section id="films">
+      <p class="films-label" data-fr="Filmographie" data-en="Filmography">Filmographie</p>
+      <hr class="films-divider">
+
+      <!-- 1. Frances Hodgkins — vignette : FH_Frances Hodgkins_.jpg -->
+      <a class="film-row" href="#" onclick="showFilm('frances'); return false;">
+        <div class="film-thumb">
+          <img src="FH_Frances Hodgkins_.jpg" alt="Frances Hodgkins"
+            onerror="this.parentElement.innerHTML='<div class=\'film-thumb-placeholder\'>Frances Hodgkins</div>'">
+        </div>
+        <div class="film-info">
+          <p class="film-meta-line">2023 · DOC Edge Festival · 75 min</p>
+          <h2 class="film-row-title">Frances Hodgkins</h2>
+          <p class="film-subtitle">Anything but a Still Life</p>
+          <div class="film-badges">
+            <span class="badge">Best Emerging Filmmaker · DOC Edge 2023</span>
+            <span class="badge">Best Sound · DOC Edge 2023</span>
+          </div>
+          <p class="film-desc"
+             data-fr="Une vision biographique et esthétique de la première artiste avant-gardiste en Nouvelle-Zélande — projeté dans des cinémas aux quatre coins du pays et dans des festivals en France et en Angleterre."
+             data-en="A biographical and aesthetic portrait of the first avant-garde artist in New Zealand — screened in cinemas across the country and at festivals in France and England.">
+            Une vision biographique et esthétique de la première artiste avant-gardiste en Nouvelle-Zélande — projeté dans des cinémas aux quatre coins du pays et dans des festivals en France et en Angleterre.
+          </p>
+          <span class="film-link" data-fr="Découvrir →" data-en="Discover →">Découvrir →</span>
+        </div>
+      </a>
+
+      <!-- 2. Bring Your Kete — vignette : BYK_Malayalam_Site.jpg — logo : BYK_Logo_yellow.png -->
+      <a class="film-row" href="#" onclick="showFilm('byk'); return false;">
+        <div class="film-thumb">
+          <img src="BYK_Malayalam_Site.jpg" alt="Bring Your Kete"
+            onerror="this.parentElement.innerHTML='<div class=\'film-thumb-placeholder\'>Bring Your Kete</div>'">
+        </div>
+        <div class="film-info">
+          <p class="film-meta-line" data-fr="2022 – Présent · Auckland" data-en="2022 – Present · Auckland">2022 – Présent · Auckland</p>
+          <img src="BYK_Logo_yellow.png" alt="Bring Your Kete" class="film-logo">
+          <span class="badge-ongoing" data-fr="Phase finale de production" data-en="Final production phase">Phase finale de production</span>
+          <p class="film-desc"
+             data-fr="Un film doublé d'un podcast qui, en regardant de plus près les communautés d'Auckland, montre combien nos cultures influencent notre façon d'appréhender le monde."
+             data-en="A film accompanied by a podcast that, by looking closely at Auckland's communities, shows how our cultures shape the way we understand the world.">
+            Un film doublé d'un podcast qui, en regardant de plus près les communautés d'Auckland, montre combien nos cultures influencent notre façon d'appréhender le monde.
+          </p>
+          <span class="film-link" data-fr="Découvrir →" data-en="Discover →">Découvrir →</span>
+        </div>
+      </a>
+
+      <!-- 3. Oxygène — vignette : OX_nana_masque_03.jpg — logo : OX_logo.jpg -->
+      <a class="film-row" href="#" onclick="showFilm('oxygene'); return false;">
+        <div class="film-thumb">
+          <img src="OX_nana_masque_03.jpg" alt="Oxygène"
+            onerror="this.parentElement.innerHTML='<div class=\'film-thumb-placeholder\'>Oxygène</div>'">
+        </div>
+        <div class="film-info">
+          <p class="film-meta-line" data-fr="Première phase de production · France" data-en="First production phase · France">Première phase de production · France</p>
+          <img src="OX_logo.jpg" alt="Oxygène" class="film-logo">
+          <br>
+          <span class="badge-ongoing" data-fr="En cours" data-en="In development">En cours</span>
+          <p class="film-desc"
+             data-fr="Oxygène suit la vie de la lumineuse Anne — une femme qui vit sa vie comme une aventure dont chaque obstacle est une occasion d'apprendre."
+             data-en="Oxygène follows the life of the radiant Anne — a woman who lives life as an adventure in which every obstacle is an opportunity to learn.">
+            Oxygène suit la vie de la lumineuse Anne — une femme qui vit sa vie comme une aventure dont chaque obstacle est une occasion d'apprendre.
+          </p>
+          <span class="film-link ghost" data-fr="En développement" data-en="In development">En développement</span>
+        </div>
+      </a>
+
+      <!-- 4. Être and to Be — vignette : EB_tableau.jpg -->
+      <a class="film-row" href="#" onclick="showFilm('etre'); return false;">
+        <div class="film-thumb">
+          <img src="EB_tableau.jpg" alt="Être and to Be"
+            onerror="this.parentElement.innerHTML='<div class=\'film-thumb-placeholder\'>Être and to Be</div>'">
+        </div>
+        <div class="film-info">
+          <p class="film-meta-line" data-fr="2016 · 40 min" data-en="2016 · 40 min">2016 · 40 min</p>
+          <h2 class="film-row-title">Être and to Be</h2>
+          <p class="film-subtitle" data-fr="Un clin d'œil à « Être et avoir »" data-en="A nod to « To Be and to Have »">Un clin d'œil à « Être et avoir »</p>
+          <p class="film-desc"
+             data-fr="Un groupe de mères françaises déterminées créent une section bilingue dans une école néo-zélandaise — un modèle désormais présent dans le monde entier."
+             data-en="A group of determined French mothers create a bilingual section in a New Zealand school — a model now found worldwide.">
+            Un groupe de mères françaises déterminées créent une section bilingue dans une école néo-zélandaise — un modèle désormais présent dans le monde entier.
+          </p>
+          <span class="film-link" data-fr="Découvrir →" data-en="Discover →">Découvrir →</span>
+        </div>
+      </a>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div>
+        <p class="section-eyebrow" style="color:rgba(255,255,255,.4)"
+           data-fr="Contact" data-en="Contact">Contact</p>
+        <p style="margin-top:20px; font-size:.84rem; line-height:1.8; color:rgba(255,255,255,.5)"
+           data-fr="Basée à Auckland, Nouvelle-Zélande.<br>Disponible entre la NZ et la France."
+           data-en="Based in Auckland, New Zealand.<br>Available between NZ and France.">
+          Basée à Auckland, Nouvelle-Zélande.<br>Disponible entre la NZ et la France.
+        </p>
+      </div>
+      <div class="contact-items">
+        <div class="ci">
+          <p class="ci-label">Email</p>
+          <p class="ci-val"><a href="mailto:contact@blandinefilms.com">contact@blandinefilms.com</a></p>
+        </div>
+        <div class="ci">
+          <p class="ci-label">Web</p>
+          <p class="ci-val"><a href="https://blandinefilms.com" target="_blank">blandinefilms.com</a></p>
+        </div>
+        <div class="ci">
+          <p class="ci-label" data-fr="Localisation" data-en="Location">Localisation</p>
+          <p class="ci-val">Auckland, Nouvelle-Zélande</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Blandine Massiet du Biest</p>
+      <p data-fr="Réalisatrice documentaire · Auckland · Paris" data-en="Documentary filmmaker · Auckland · Paris">Réalisatrice documentaire · Auckland · Paris</p>
+    </footer>
+
+  </div><!-- /main-page -->
+
+
+  <!-- PAGE : FRANCES HODGKINS -->
+  <!-- hero : FH_Frances Hodgkins_.jpg — galerie : FH_Restauration room AAG.jpg / FH_Tossa de Mar.jpg / FH_Treboul France.jpg / FH_View from FH studio st Ives.jpg -->
+  <div id="page-frances" class="film-page">
+    <p class="fp-back" onclick="showHome()">Retour</p>
+    <div class="fp-hero-img">
+      <img src="FH_Frances Hodgkins_.jpg" alt="Frances Hodgkins"
+        onerror="this.parentElement.innerHTML='<div class=\'fp-hero-placeholder\'>Frances Hodgkins</div>'">
+    </div>
+    <div class="fp-content">
+      <p class="fp-meta">2023 · DOC Edge Festival · 75 min</p>
+      <h1 class="fp-title">Frances Hodgkins</h1>
+      <p class="fp-subtitle">Anything but a Still Life</p>
+      <div class="fp-badges">
+        <span class="badge">Best Emerging Filmmaker · DOC Edge 2023</span>
+        <span class="badge">Best Sound · DOC Edge 2023</span>
+      </div>
+      <hr class="fp-sep">
+      <div class="fp-body">
+        <p data-fr="Une vision biographique mais aussi esthétique de la première artiste avant-gardiste en Nouvelle-Zélande. Le film a été projeté dans des cinémas aux quatre coins de la Nouvelle-Zélande, et dans des festivals en France et en Angleterre. Le film est maintenant en ligne, et peut être vu partout dans le monde."
+           data-en="A biographical yet also aesthetic portrait of the first avant-garde artist in New Zealand. The film was screened in cinemas across New Zealand, and at festivals in France and England. The film is now available online and can be viewed worldwide.">
+          Une vision biographique mais aussi esthétique de la première artiste avant-gardiste en Nouvelle-Zélande. Le film a été projeté dans des cinémas aux quatre coins de la Nouvelle-Zélande, et dans des festivals en France et en Angleterre. Le film est maintenant en ligne, et peut être vu partout dans le monde.
+        </p>
+        <p><em data-fr="Musique : Dana Lund" data-en="Music: Dana Lund">Musique : Dana Lund</em></p>
+      </div>
+    </div>
+    <div class="fp-gallery">
+      <div class="fp-gallery-img"><img src="FH_Restauration room AAG.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+      <div class="fp-gallery-img"><img src="FH_Tossa de Mar.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+      <div class="fp-gallery-img"><img src="FH_Treboul France.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+      <div class="fp-gallery-img"><img src="FH_View from FH studio st Ives.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+    </div>
+  </div>
+
+
+  <!-- PAGE : BRING YOUR KETE -->
+  <!-- hero : BYK_Malayalam_Site.jpg — galerie : BYK_Moui_Site.jpg / BYK_Nenard.jpg / BYK_dia_muertos.jpg / BYK_Kwadwo_Kwabena.jpg -->
+  <div id="page-byk" class="film-page">
+    <p class="fp-back" onclick="showHome()">Retour</p>
+    <div class="fp-hero-img">
+      <img src="BYK_Malayalam_Site.jpg" alt="Bring Your Kete"
+        onerror="this.parentElement.innerHTML='<div class=\'fp-hero-placeholder\'>Bring Your Kete</div>'">
+    </div>
+    <div class="fp-content">
+      <p class="fp-meta" data-fr="2022 – Présent · Auckland · Phase finale de production" data-en="2022 – Present · Auckland · Final production phase">2022 – Présent · Auckland · Phase finale de production</p>
+      <img src="BYK_Logo_yellow.png" alt="Bring Your Kete" class="fp-logo">
+      <span class="badge-ongoing" style="display:inline-block; margin-bottom:24px"
+            data-fr="Phase finale de production" data-en="Final production phase">Phase finale de production</span>
+      <hr class="fp-sep">
+      <div class="fp-body">
+        <p data-fr="Un film doublé d'un podcast qui, en regardant de plus près les communautés d'Auckland, montre combien nos cultures influencent notre façon d'appréhender le monde."
+           data-en="A film accompanied by a podcast that, by looking closely at Auckland's communities, shows how our cultures shape the way we understand the world.">
+          Un film doublé d'un podcast qui, en regardant de plus près les communautés d'Auckland, montre combien nos cultures influencent notre façon d'appréhender le monde.
+        </p>
+      </div>
+    </div>
+    <div class="fp-gallery">
+      <div class="fp-gallery-img"><img src="BYK_Moui_Site.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+      <div class="fp-gallery-img"><img src="BYK_Nenard.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+      <div class="fp-gallery-img"><img src="BYK_dia_muertos.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+      <div class="fp-gallery-img"><img src="BYK_Kwadwo_Kwabena.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+    </div>
+  </div>
+
+
+  <!-- PAGE : OXYGÈNE -->
+  <!-- hero : OX_nana_masque_03.jpg — galerie : OX_ nana et nini.jpg / OX_Nana_Nadia_03.jpg / OX_nana et Arya.jpg / OX_nana rdv richelieu.jpg -->
+  <div id="page-oxygene" class="film-page">
+    <p class="fp-back" onclick="showHome()">Retour</p>
+    <div class="fp-hero-img">
+      <img src="OX_nana_masque_03.jpg" alt="Oxygène"
+        onerror="this.parentElement.innerHTML='<div class=\'fp-hero-placeholder\'>Oxygène</div>'">
+    </div>
+    <div class="fp-content">
+      <p class="fp-meta" data-fr="Première phase de production · France" data-en="First production phase · France">Première phase de production · France</p>
+      <img src="OX_logo.jpg" alt="Oxygène" class="fp-logo">
+      <br>
+      <span class="badge-ongoing" style="display:inline-block; margin-bottom:24px"
+            data-fr="En cours" data-en="In development">En cours</span>
+      <hr class="fp-sep">
+      <div class="fp-body">
+        <p data-fr="Oxygène suit la vie de la lumineuse Anne — une femme qui vit sa vie comme une aventure dont chaque obstacle est une occasion d'apprendre."
+           data-en="Oxygène follows the life of the radiant Anne — a woman who lives life as an adventure in which every obstacle is an opportunity to learn.">
+          Oxygène suit la vie de la lumineuse Anne — une femme qui vit sa vie comme une aventure dont chaque obstacle est une occasion d'apprendre.
+        </p>
+      </div>
+    </div>
+    <div class="fp-gallery">
+      <div class="fp-gallery-img"><img src="OX_ nana et nini.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+      <div class="fp-gallery-img"><img src="OX_Nana_Nadia_03.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+      <div class="fp-gallery-img"><img src="OX_nana et Arya.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+      <div class="fp-gallery-img"><img src="OX_nana rdv richelieu.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+    </div>
+  </div>
+
+
+  <!-- PAGE : ÊTRE AND TO BE -->
+  <!-- hero : EB_tableau.jpg — galerie : EB_Siaan.jpg / EB_Dorothy.jpg / EB_Zvee.jpg / EB_Axelle.jpg -->
+  <div id="page-etre" class="film-page">
+    <p class="fp-back" onclick="showHome()">Retour</p>
+    <div class="fp-hero-img">
+      <img src="EB_tableau.jpg" alt="Être and to Be"
+        onerror="this.parentElement.innerHTML='<div class=\'fp-hero-placeholder\'>Être and to Be</div>'">
+    </div>
+    <div class="fp-content">
+      <p class="fp-meta">2016 · 40 min</p>
+      <h1 class="fp-title">Être and to Be</h1>
+      <p class="fp-subtitle" data-fr="Un clin d'œil à « Être et avoir »" data-en="A nod to « To Be and to Have »">Un clin d'œil à « Être et avoir »</p>
+      <hr class="fp-sep">
+      <div class="fp-body">
+        <p data-fr="Un groupe de mères françaises déterminées créent une section bilingue dans une école néo-zélandaise — un modèle désormais présent dans le monde entier."
+           data-en="A group of determined French mothers create a bilingual section in a New Zealand school — a model now found worldwide.">
+          Un groupe de mères françaises déterminées créent une section bilingue dans une école néo-zélandaise — un modèle désormais présent dans le monde entier.
+        </p>
+      </div>
+    </div>
+    <div class="fp-gallery">
+      <div class="fp-gallery-img"><img src="EB_Siaan.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+      <div class="fp-gallery-img"><img src="EB_Dorothy.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+      <div class="fp-gallery-img"><img src="EB_Zvee.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+      <div class="fp-gallery-img"><img src="EB_Axelle.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=\'fp-gallery-placeholder\'></div>'"></div>
+    </div>
+  </div>
+
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('solid', window.scrollY > 50);
+    });
+
+    let lang = 'fr';
+    function setLang(l) {
+      lang = l;
+      document.getElementById('btn-fr').classList.toggle('active', l === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', l === 'en');
+      document.querySelectorAll('[data-fr]').forEach(el => {
+        const val = el.getAttribute('data-' + l);
+        if (!val) return;
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = val;
+        else el.innerHTML = val;
+      });
+    }
+
+    function showHome() {
+      document.getElementById('main-page').style.display = '';
+      document.querySelectorAll('.film-page').forEach(p => p.classList.remove('active'));
+      window.scrollTo(0, 0);
+    }
+
+    function showFilm(id) {
+      document.getElementById('main-page').style.display = 'none';
+      document.querySelectorAll('.film-page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + id).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    setLang('fr');
+  </script>
+</body>
+</html>
