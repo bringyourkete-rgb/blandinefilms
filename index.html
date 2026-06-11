@@ -643,6 +643,7 @@
       document.getElementById('main-page').style.display = '';
       document.querySelectorAll('.film-page').forEach(p => p.classList.remove('active'));
       window.scrollTo(0, 0);
+      history.pushState({ page: 'home' }, '', ' ');
     }
 
     function showFilm(id) {
@@ -650,7 +651,18 @@
       document.querySelectorAll('.film-page').forEach(p => p.classList.remove('active'));
       document.getElementById('page-' + id).classList.add('active');
       window.scrollTo(0, 0);
+      history.pushState({ page: id }, '', '#' + id);
     }
+
+    window.addEventListener('popstate', function(e) {
+      if (e.state && e.state.page && e.state.page !== 'home') {
+        showFilm(e.state.page);
+      } else {
+        document.getElementById('main-page').style.display = '';
+        document.querySelectorAll('.film-page').forEach(p => p.classList.remove('active'));
+        window.scrollTo(0, 0);
+      }
+    });
 
     setLang('fr');
   </script>
