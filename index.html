@@ -124,6 +124,7 @@
       color: #3a3a3a; margin-bottom: 16px; font-weight: 300;
     }
     .about-text p:last-child { margin-bottom: 0; }
+    body.lang-en .fr-only { display: none; }
     .about-image { position: relative; overflow: hidden; }
     .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
@@ -355,9 +356,9 @@
            data-en="I build my work around trust and connection. Because I am drawn to stories that resonate with me personally, there is always a shared human connection at the heart of the exchange. I take the time to understand the people I film and to become familiar with their environments, allowing a relationship to develop organically. From this, a space of mutual understanding emerges, where each of us, in our own way, feels able to share ideas and experiences that matter.<br><br> The people in my films speak about their lives and their way of experiencing the world, while I shape these encounters into stories that aim to resonate with audiences and hopefully shift perspectives. ">
           Pour moi, chaque film est comme une histoire d'amour… qui finit bien. C'est un espace privilégié où celle qui filme voit l'autre avec toute son attention et sa complète implication, et où celui ou celle qui est filmé donne sa confiance et partage ce qu'il y a d'essentiel en lui ou en elle.
         </p>
-        <p data-fr="En espérant que le résultat de cette alchimie touche le spectateur et ouvre de nouveaux horizons."
-  En espérant que le résultat de cette alchimie touche le spectateur et ouvre de nouveaux horizons.
-</p>
+       <p class="fr-only" data-fr="En espérant que le résultat de cette alchimie touche le spectateur et ouvre de nouveaux horizons." data-en="">
+          En espérant que le résultat de cette alchimie touche le spectateur et ouvre de nouveaux horizons.
+        </p>
       </div>
       <div class="about-image">
         <img src="BYK_Nick corridor.jpg" alt="Extrait du film Bring Your Kete">
@@ -627,9 +628,10 @@ Accompanied by a beautiful music rich in sounds, rhythms, and languages from Loc
       nav.classList.toggle('solid', window.scrollY > 50);
     });
 
-    let lang = 'fr';
+let lang = 'fr';
     function setLang(l) {
       lang = l;
+      document.body.classList.toggle('lang-en', l === 'en');
       document.getElementById('btn-fr').classList.toggle('active', l === 'fr');
       document.getElementById('btn-en').classList.toggle('active', l === 'en');
       document.querySelectorAll('[data-fr]').forEach(el => {
